@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+  xmlns:th="http://www.thymeleaf.org" 
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+  layout:decorate="~{base}">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+</head>
+<body>
+	<div th:replace="fragments/menu :: menu"></div>
+	<p> Welcome to my Spring dev show-case! </p>
+	<p> What's in there? For database access, I use hibernate, queries are made with Ajax to reload only a portion of the page and enhance performances,
+	Thymeleaf for the html layout code is Spring (boot+mvc)
+	<p>For content related to database interactions (using embedded H2 database), click <a href="/h2db">here</a></p>
+	<p>For session management content, click <a href="/session">here</a></p>
+</body>
+</html>

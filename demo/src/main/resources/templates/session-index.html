@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+</head>
+<body>
+	<div th:replace="fragments/menu :: menu"></div>
+
+	<h1>Home page</h1>
+	<p>This is Home page.</p>
+	<!-- 	   <p th:text="'Don't forget:' + ${session.thought}" th:unless="${session == null}"/> -->
+	<p th:text="'Your thought : ' + ${session.thought}"
+		th:unless="${session == null} and ${session.thought == null}" />
+	<p>
+		Put an attribute in session <a href="session-form">here</a>
+	</p>
+	<p>
+		Clean up your session by clicking <a href="/session-cleanup">here!</a>
+	</p>
+	<p> Back to <a href="/">index</a>
+</body>
+</html>
