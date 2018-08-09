@@ -19,6 +19,8 @@ public class NumbersSumForm {
 	@NotNull
     private Integer sum;	
 
+    private String message;	
+
 	public NumbersSumForm() {
 		// nothing
 	}
@@ -45,6 +47,14 @@ public class NumbersSumForm {
 
 	public void setSum(Integer sum) {
 		this.sum = sum;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

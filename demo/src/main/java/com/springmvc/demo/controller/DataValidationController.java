@@ -36,9 +36,11 @@ public class DataValidationController {
 			}
 			
 	        if (bindingResult.hasErrors()) {
+		        System.out.println("ca passe ici");
 	            return "dataValidationIndex";
 	        }
 	        
+	        numbersSumForm.setMessage("Good job, a healthy brain in a healthy body is important!");
 			return "dataValidationIndex";
 		}
 
