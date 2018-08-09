@@ -20,10 +20,4 @@ public class FragmentsController {
     public String paramsPage() {
         return "menu.html";
     }
- 
-//    @GetMapping("/other")
-//    public String otherPage(Model model) {
-//        model.addAttribute("data", StudentUtils.buildStudents());
-//        return "other.html";
-//    }
 }

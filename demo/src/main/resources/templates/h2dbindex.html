@@ -58,23 +58,17 @@
 			$("#search-form").submit(function(event) {
 				// Disble the search button
 				enableSearchButton(false);
-
 				// Prevent the form from submitting via the browser.
 				event.preventDefault();
-
 				searchAllViaAjax();
-
 			});
 
 			$("#addUser").submit(function(event) {
 				// Disble the search button
 				enableSearchButton(false);
-
 				// Prevent the form from submitting via the browser.
 				event.preventDefault();
-
 				addViaAjax(jQuery("#name").val(), jQuery("#email").val());
-
 			});
 
 		});

@@ -16,7 +16,6 @@ public class SessionController {
 	
 	@RequestMapping(value="/sessionIndex")
 	public ModelAndView singleFieldPage(WebRequest request, SessionStatus status, HttpSession session) {
-//		request.removeAttribute("thought", WebRequest.SCOPE_SESSION);
 		return new ModelAndView("session-index");
 	}
 	

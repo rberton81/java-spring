@@ -14,6 +14,20 @@
 <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
 <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+
+<th:block th:switch="${session.themeMode}" th:unless="${session == null}">
+<style th:case="'night'">
+body {
+    background-color: black;
+}
+</style>
+<style th:case="'day'">
+body {
+    background-color: white;
+}
+</style>
+</th:block>
+
 </head>
 <body>
 	<div th:replace="fragments/menu :: menu"></div>
@@ -41,11 +55,9 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-		
 	</script>
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-		
 	</script>
 	<th:block layout:fragment="scripts">
 	</th:block>

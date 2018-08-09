@@ -3,11 +3,22 @@
 <head>
 <head>
 <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}" />
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 </head>
 <body>
 	<div th:fragment="footer">
 		<div class="footer">
-			<p> Check out the sources for this project on my <a href="https://github.com/rberton81/java-spring">GitHub</a> !</p>
+			<div id="theme-mode">
+				<th:block th:switch="${session.themeMode}" th:unless="${session == null}">
+					<p th:case="'day'"> Too bright? Switch to <a href="themeMode?mode=night"><strong>night mode</strong></a>! </p>
+					<p th:case="'night'"> Too dark? Switch to <a href="themeMode?mode=day"><strong>day mode</strong></a>! </p> 
+					<p th:case="*"> Too bright? Switch to <a href="themeMode?mode=night"><strong>night mode</strong></a>! </p> 
+				</th:block>
+			</div>
+			<p>
+				Check out the sources for this project on my <a
+					href="https://github.com/rberton81/java-spring">GitHub</a> !
+			</p>
 		</div>
 	</div>
 </body>
