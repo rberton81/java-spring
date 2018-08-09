@@ -11,4 +11,9 @@ public class BaseController {
         return "contact";
     }
     
+    @GetMapping("/error")
+    public String errorPage() {
+        return "error";
+    }
+    
 }
