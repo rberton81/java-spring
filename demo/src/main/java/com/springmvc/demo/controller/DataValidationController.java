@@ -15,11 +15,12 @@ import com.springmvc.demo.bo.NumbersSumForm;
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/dataValidation") // This means URL's start with /h2db (after Application path)
 public class DataValidationController {
-
+	private String ROOT_FOLDER = "dataValidation/";
+	
 	// Index page
 	@GetMapping("/index")
 	public String getIndex(NumbersSumForm numbersSumForm) {
-		return "dataValidationIndex";
+		return ROOT_FOLDER + "dataValidationIndex";
 	}
 	
 	// Index page
@@ -37,11 +38,11 @@ public class DataValidationController {
 			
 	        if (bindingResult.hasErrors()) {
 		        System.out.println("ca passe ici");
-	            return "dataValidationIndex";
+	            return ROOT_FOLDER + "dataValidationIndex";
 	        }
 	        
 	        numbersSumForm.setMessage("Good job, a healthy brain in a healthy body is important!");
-			return "dataValidationIndex";
+			return ROOT_FOLDER + "dataValidationIndex";
 		}
 
 

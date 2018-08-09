@@ -13,22 +13,23 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("thought")
 public class SessionController {
+	private String ROOT_FOLDER = "session/";
 	
 	@RequestMapping(value="/sessionIndex")
 	public ModelAndView singleFieldPage(WebRequest request, SessionStatus status, HttpSession session) {
-		return new ModelAndView("session-index");
+		return new ModelAndView(ROOT_FOLDER + "session-index");
 	}
 	
 	@RequestMapping(value="/session-cleanup")
 	public ModelAndView cleanUpSession(WebRequest request, SessionStatus status, HttpSession session) {
 		status.setComplete();
-		return new ModelAndView("session-index");
+		return new ModelAndView(ROOT_FOLDER + "session-index");
 	}
 	
 	
 	@RequestMapping(value="/session-form")
 	public ModelAndView sessionFormPage() {
-		return new ModelAndView("session-form");
+		return new ModelAndView(ROOT_FOLDER + "session-form");
 	}
 	
 	
@@ -36,7 +37,7 @@ public class SessionController {
 	public ModelAndView rememberThought(@RequestParam String thoughtParam) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("thought", thoughtParam);
-		modelAndView.setViewName("session-form");
+		modelAndView.setViewName(ROOT_FOLDER + "session-form");
 		return modelAndView;
 	}
 	

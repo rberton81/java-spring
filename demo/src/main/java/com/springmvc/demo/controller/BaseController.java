@@ -11,9 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @SessionAttributes("themeMode")
 public class BaseController {
-
-
-	
 	
     @GetMapping("/")
     public String indexPage(HttpServletRequest request) {
@@ -22,7 +19,7 @@ public class BaseController {
 	
     @GetMapping("/contact")
     public String contactPage() {
-        return "contact";
+        return "contact/index";
     }
     
     @GetMapping("/error")
