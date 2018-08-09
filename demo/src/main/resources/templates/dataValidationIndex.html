@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="base">
+<head>
+</head>
+
+<th:block layout:fragment="page_content" id="page_content">
+	<body>
+		<h2>Data validation handling in Spring MVC</h2>
+
+	<p> There are usually two kinds of control in Spring MVC. </p>
+	<p> First one is client side validation, handled with Javascript, that will ensure the data you are about to query satisfies a few rules,
+	mostly in the format of the data, and will rarely implement any kind of intelligence (cf example) </p>
+	<p> Check this behaviour here : </p>
+	
+	<div class="container-border">
+	<p> #TODO </p>
+	</div>
+	
+	
+	<p> However, this first validation is not sufficient, as this Javascript validation can easily be bypassed (for instance Javascript could be disabled)
+	To keep the application safe, we have to perfom server side validation. This validation is done by the controller and after the user effectively sent the data to the server </p>
+	<p> You can check this behaviour here </p>	
+	
+	<div class="container-border">
+		<form action="/dataValidation/index" th:action="@{/dataValidation/index}" th:object="${numbersSumForm}" method="post">
+			<table>
+				<tbody>
+					<tr>
+					
+						<td>Number 1 :</td>
+						<td><input name="number1" th:field="*{number1}" type="number"></td>
+						<td th:if="${#fields.hasErrors('number1')}" th:errors="*{number1}">Number 1 Error</td>
+					</tr>
+					<tr>
+					
+						<td>Number 2 :</td>
+						<td><input name="number2" th:field="*{number2}" type="number"></td>
+						<td th:if="${#fields.hasErrors('number2')}" th:errors="*{number2}">Number 2 Error</td>
+					</tr>
+					<tr>
+					
+						<td>Sum of your two numbers :</td>
+						<td><input name="sum" th:field="*{sum}" type="number"></td>
+						<td th:if="${#fields.hasErrors('sum')}" th:errors="*{sum}">Sum Error</td>
+					</tr>
+					<tr>
+						<td><input type="submit"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		</div>
+	
+	
+		<p>Back to <a href="session">previous page</a></p>
+	</body>
+</th:block>
+</html>

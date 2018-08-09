@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes("thought")
 public class SessionController {
 	
-	@RequestMapping(value="/session")
+	@RequestMapping(value="/sessionIndex")
 	public ModelAndView singleFieldPage(WebRequest request, SessionStatus status, HttpSession session) {
 //		request.removeAttribute("thought", WebRequest.SCOPE_SESSION);
 		return new ModelAndView("session-index");
@@ -23,7 +23,6 @@ public class SessionController {
 	@RequestMapping(value="/session-cleanup")
 	public ModelAndView cleanUpSession(WebRequest request, SessionStatus status, HttpSession session) {
 		status.setComplete();
-		System.out.println(request.getAttribute("thought", WebRequest.SCOPE_SESSION));
 		return new ModelAndView("session-index");
 	}
 	

@@ -1,24 +1,29 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="base">
 <head>
-<title>Getting Started: Serving Web Content</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
 </head>
-<body>
-	<div th:replace="fragments/menu :: menu"></div>
 
-	<h1>Home page</h1>
-	<p>This is Home page.</p>
-	<!-- 	   <p th:text="'Don't forget:' + ${session.thought}" th:unless="${session == null}"/> -->
-	<p th:text="'Your thought : ' + ${session.thought}"
-		th:unless="${session == null} and ${session.thought == null}" />
-	<p>
-		Put an attribute in session <a href="session-form">here</a>
-	</p>
-	<p>
-		Clean up your session by clicking <a href="/session-cleanup">here!</a>
-	</p>
-	<p> Back to <a href="/">index</a>
-</body>
+<th:block layout:fragment="page_content" id="page_content">
+	<body>
+
+		<h1>Session part index page</h1>
+		<div th:if="${session == null} or ${session.thought == null}">
+			<div th:utext = "'You have not entered any thought yet! Click &lt;a href=&quot;session-form&quot;&gt;here&lt;/a&gt; to enter one! '"></div>
+<!-- 			<div th:text = "You haven&#34t entered any thought yet! Click <a href='session-form'>here</a> to enter one!"/> -->
+		</div>
+		
+		<p>
+		<p th:text="'Your thought for this session : ' + ${session.thought}"
+			th:unless="${session == null} or ${session.thought == null}" />
+		<p>
+			Put an attribute in session <a href="session-form">here</a>
+		</p>
+		<p>
+			Clean up your session by clicking <a href="/session-cleanup">here!</a>
+		</p>
+	</body>
+</th:block>
 </html>

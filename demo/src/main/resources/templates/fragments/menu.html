@@ -3,15 +3,16 @@
 <head>
 <title>Getting Started: Serving Web Content</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<head> 
-    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}" />
 </head>
 <body>
 	<div th:fragment="menu">
-		<ul>
+		<ul class="menu">
 			<li><a href="/">Home</a></li>
-			<li><a href="/h2db">Database</a></li>
-			<li><a href="/session">Session Management</a></li>
+			<li><a href="/h2db/index">Database</a></li>
+			<li><a href="/sessionIndex">Session Management</a></li>
+			<li><a href="/dataValidation/index">Data Validation</a></li>
 			<li><a href="/contact">Contact me</a></li>
 		</ul>
 	</div>

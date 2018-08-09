@@ -1,28 +1,33 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="base">
 <head>
-<title>Getting Started: Serving Web Content</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" th:href="@{/css/menu.css}"/>
 </head>
-<body>
-	<div th:replace="fragments/menu :: menu"></div>
-	<h2>Adding of a String into the session</h2>
 
-	<form action="remember" method="post">
-		<table>
-			<tbody>
-				<tr>
-					<td>To remember:</td>
-					<td><input name="thoughtParam" type="text"></td>
-				</tr>
-				<tr>
-					<td><input type="submit"></td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-	</form>
-	<a href="session">Main page</a>
-</body>
+<th:block layout:fragment="page_content" id="page_content">
+	<body>
+		<h2>Adding of a String into the session attributes</h2>
+
+	<div class="container-border">
+		<form action="remember" method="post">
+			<table>
+				<tbody>
+					<tr>
+					
+						<td>To remember:</td>
+						<td><input name="thoughtParam" type="text"></td>
+					</tr>
+					<tr>
+						<td><input type="submit"></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		</div>
+		<p>Back to <a href="session">previous page</a></p>
+	</body>
+</th:block>
 </html>

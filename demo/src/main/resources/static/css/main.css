@@ -1,7 +1,12 @@
-h1{
-	color:#0000FF;
-}
-
-h2{
-	color:#FF0000;
+.container-border {
+border: 3px solid #B22222;
+border-radius: 10px;
+margin-top: 15px;
+margin-bottom: 15px;
+margin-left: 15px;
+margin-right: 15px;
+padding-left: 15px;
+padding-right: 15px;
+padding-top: 8px;
+padding-bottom: 8px;
 }

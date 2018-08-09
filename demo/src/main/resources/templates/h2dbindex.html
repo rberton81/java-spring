@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="base">
+<head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<th:block layout:fragment="page_content" id="page_content">
+	<body>
+		<p th:text="${message}" />
+		<h1>Here you can try the database interactions of the application</h1>
+		<div>
+			<p>Add a user to the database here... Notice how the whole page is not reloaded after you perform your query!  This is thanks to Ajax querying!</p>
+
+
+			<div class="container-border">
+				<form action="#" method="post" id="addUser" name="userForm">
+					<fieldset>
+						<div>
+							<label th:text="Name">Name : </label> <input type="text"
+								name="name" id="name" />
+						</div>
+						<div>
+							<label th:text="Email">Email :</label> <input type="text"
+								name="email" id="email" />
+						</div>
+
+						<input type="submit" value="Submit" /> <input type="reset"
+							value="Reset" />
+
+					</fieldset>
+				</form>
+			</div>
+			<div id="feedbackAdd"></div>
+		</div>
+
+		<div>
+			<p>Here you can query all the users from the database</p>
+			<form class="form-horizontal" id="search-form">
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" id="bth-search"
+							class="btn btn-primary btn-lg">Get All Users!</button>
+					</div>
+
+				</div>
+			</form>
+
+			<div id="feedback"></div>
+		</div>
+	</body>
+
+	<script>
+		jQuery(document).ready(function($) {
+
+			$("#search-form").submit(function(event) {
+				// Disble the search button
+				enableSearchButton(false);
+
+				// Prevent the form from submitting via the browser.
+				event.preventDefault();
+
+				searchAllViaAjax();
+
+			});
+
+			$("#addUser").submit(function(event) {
+				// Disble the search button
+				enableSearchButton(false);
+
+				// Prevent the form from submitting via the browser.
+				event.preventDefault();
+
+				addViaAjax(jQuery("#name").val(), jQuery("#email").val());
+
+			});
+
+		});
+
+		function searchAllViaAjax() {
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "/h2db/getAll",
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+					display(data);
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+					display(e);
+				},
+				done : function(e) {
+					console.log("DONE");
+					enableSearchButton(true);
+				}
+			});
+
+		}
+
+		function addViaAjax(name, email) {
+
+			var search = {}
+			search["username"] = $("#name").val();
+			search["email"] = $("#email").val();
+
+			$.ajax({
+				type : "POST",
+				contentType : "application/json",
+				url : "/h2db/addAjax",
+				// 			data : $('form[name=userForm]').serialize(),
+				// 			data: {name: name, email: email},
+				data : JSON.stringify(search),
+				dataType : 'json',
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+					display(data);
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+					display(e);
+				},
+				done : function(e) {
+					console.log("DONE");
+					enableSearchButton(true);
+				}
+			});
+
+		}
+
+		function enableSearchButton(flag) {
+			$("#btn-search").prop("disabled", flag);
+		}
+
+		function display(data) {
+			var json = "<h4>Ajax Response</h4><pre>"
+					+ JSON.stringify(data, null, 4) + "</pre>";
+			$('#feedback').html(json);
+		}
+	</script>
+</th:block>
+</html>
