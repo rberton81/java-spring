@@ -37,7 +37,6 @@ public class DataValidationController {
 			}
 			
 	        if (bindingResult.hasErrors()) {
-		        System.out.println("ca passe ici");
 	            return ROOT_FOLDER + "dataValidationIndex";
 	        }
 	        

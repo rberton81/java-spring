@@ -7,11 +7,11 @@ ul.menu {
     background-color: #333;
 }
 
-ul.menu > li {
+ul.menu > li.menu-element {
     float: left;
 }
 
-ul.menu > li a {
+ul.menu > li.menu-element a {
     display: block;
     color: white;
     text-align: center;
@@ -20,6 +20,31 @@ ul.menu > li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-ul.menu > li a:hover {
+ul.menu > li.menu-element a:hover {
     background-color: #111;
+}
+
+/* Change the link color to #111 (black) on hover */
+ul.menu > li.home {
+	background-color: #4CAF50;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+ul.menu > li.home a:hover {
+    background-color: #4CAF50;
+}
+
+
+/* Change the link color to #111 (black) on hover */
+ul.menu > li.user {
+    float : right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }

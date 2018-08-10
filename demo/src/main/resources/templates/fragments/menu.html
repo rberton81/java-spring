@@ -9,13 +9,16 @@
 <body>
 	<div th:fragment="menu">
 		<ul class="menu">
-			<li><a href="/">Home</a></li>
-			<li><a href="/h2db/index">Database</a></li>
-			<li><a href="/sessionIndex">Session Management</a></li>
-			<li><a href="/dataValidation/index">Data Validation</a></li>
-			<li><a href="/logging/index">Logging Management</a></li>
-			<li><a href="/contact">Contact me</a></li>
+			<li class="menu-element home"><a href="/">Home</a></li>
+			<li class="menu-element"><a href="/h2db/index">Database</a></li>
+			<li class="menu-element"><a href="/sessionIndex">Session Management</a></li>
+			<li class="menu-element"><a href="/dataValidation/index">Data Validation</a></li>
+			<li class="menu-element"><a href="/login/index">Log In & Roles Management</a></li>
+			<li class="menu-element"><a href="/contact">Contact me</a></li>
+			<li class="user" th:if="${#httpServletRequest.remoteUser != null}" th:text="${'You are currently logged in as ' + #httpServletRequest.remoteUser}"></li>
+			<li class="user" th:if="${#httpServletRequest.remoteUser == null}">You are not currently logged in. Do you want to <a href="/login/login">log in</a>?</li>
 		</ul>
+		
 	</div>
 </body>
 </html>

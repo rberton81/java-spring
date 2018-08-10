@@ -35,6 +35,7 @@ public class SessionController {
 	
 	@RequestMapping(value="/remember")	
 	public ModelAndView rememberThought(@RequestParam String thoughtParam) {
+		System.out.println("ça passe ici");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("thought", thoughtParam);
 		modelAndView.setViewName(ROOT_FOLDER + "session-form");
