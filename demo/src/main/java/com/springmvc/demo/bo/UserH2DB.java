@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class UserH2DB {
 	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -17,15 +17,23 @@ public class User {
 	@JsonView(Views.Public.class)
     private String name;
 
+    private String password;
+	
 	@JsonView(Views.Public.class)
     private String email;
 
-	public User() {
+	public UserH2DB() {
 		// nothing
 	}
 	
-	public User(String name, String email) {
+	public UserH2DB(String name, String email) {
 		this.name = name;
+		this.email = email;
+	}
+
+	public UserH2DB(String name, String password, String email) {
+		this.name = name;
+		this.password = password;
 		this.email = email;
 	}
 	
@@ -43,6 +51,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getEmail() {

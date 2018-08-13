@@ -12,7 +12,7 @@ public class AjaxResponseBody {
 	String code;
 
 	@JsonView(Views.Public.class)
-	User result;
+	UserH2DB result;
 
 	// getters and setters
 	public String getMsg() {
@@ -31,11 +31,11 @@ public class AjaxResponseBody {
 		this.code = code;
 	}
 
-	public User getResult() {
+	public UserH2DB getResult() {
 		return result;
 	}
 
-	public void setResult(User result) {
+	public void setResult(UserH2DB result) {
 		this.result = result;
 	}
 
