@@ -10,9 +10,9 @@
 		<div class="footer">
 			<div id="theme-mode">
 				<th:block th:switch="${session.themeMode}" th:unless="${session == null}">
-					<p th:case="'day'"> Too bright? Switch to <a href="/themeMode?mode=night"><strong>night mode</strong></a>! </p>
-					<p th:case="'night'"> Too dark? Switch to <a href="/themeMode?mode=day"><strong>day mode</strong></a>! </p> 
-					<p th:case="*"> Too bright? Switch to <a href="/themeMode?mode=night"><strong>night mode</strong></a>! </p> 
+					<p th:case="'day'"> Too bright? Switch to <a th:href="'/themeMode?mode=night&urlFrom='+${#httpServletRequest.requestURI}"><strong>night mode</strong></a>! </p>
+					<p th:case="'night'"> Too dark? Switch to <a th:href="'/themeMode?mode=day&urlFrom='+${#httpServletRequest.requestURI}"><strong>day mode</strong></a>! </p> 
+					<p th:case="*"> Too bright? Switch to <a th:href="'/themeMode?mode=night&urlFrom='+${#httpServletRequest.requestURI}"><strong>night mode</strong></a>! </p> 
 				</th:block>
 			</div>
 			<p>

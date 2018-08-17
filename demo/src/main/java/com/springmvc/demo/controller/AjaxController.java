@@ -68,6 +68,44 @@ public class AjaxController {
 
 	}
 
+	@JsonView(Views.Public.class)
+	@RequestMapping(value = "/login/loginSignIn")
+	public AjaxResponseBody signIn(@RequestBody SearchCriteria search) {
+		AjaxResponseBody result = new AjaxResponseBody();
+
+		// Check if exists before adding
+		if (isValidSearchCriteriaSignIn(search)) {
+
+			User n = new User(search.getUsername(), "{noop}" + search.getPassword(), search.getEmail(), true, "ROLE_USER");
+			
+			List<User> usersQuery = userRepository.findByNameAndEmail(n.getName(), n.getEmail());
+			
+			if (usersQuery.isEmpty()) {
+				User response = userRepository.save(n);
+				if (response != null) {
+					result.setCode("200");
+					result.setMsg("The user has successfully been added to the database!");
+					result.setResult(response);
+				} else {
+					result.setCode("204");
+					result.setMsg("No user!");
+				}
+			} else {
+				result.setCode("210");
+				result.setMsg("User already existing in base!");
+				result.setResult(usersQuery.get(0));
+			}
+		} else {
+			result.setCode("400");
+			result.setMsg("At least one of the search criteria is empty!");
+		}
+
+		// AjaxResponseBody will be converted into json format and send back to the
+		// request.
+		return result;
+
+	}
+	
 	private boolean isValidSearchCriteria(SearchCriteria search) {
 
 		boolean valid = true;
@@ -83,6 +121,24 @@ public class AjaxController {
 		return valid;
 	}
 
+
+	private boolean isValidSearchCriteriaSignIn(SearchCriteria search) {
+
+		boolean valid = true;
+
+		if (search == null) {
+			valid = false;
+		}
+
+		if (StringUtils.isEmpty(search.getUsername())
+				|| StringUtils.isEmpty(search.getEmail())
+						|| StringUtils.isEmpty(search.getPassword()) ) {
+			valid = false;
+		}
+
+		return valid;
+	}
+	
 	// Init some users for testing
 	@PostConstruct
 	private void iniDataForTesting() {
@@ -90,8 +146,10 @@ public class AjaxController {
 
 		User user1 = new User("romain", "romppl63@gmail.com");
 		User user2 = new User("boss", "boss@yourboss.com");
+		User user3 = new User("user", "{noop}password", "user@pass.com", true,"ROLE_USER");
 		users.add(user1);
 		users.add(user2);
+		users.add(user3);
 		userRepository.saveAll(users);
 	}
 

@@ -22,15 +22,21 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	 @Autowired
 	 DataSource dataSource;
+	 
 	 private static String REALM="MY_TEST_REALM";
 
+	 @Autowired	
+	 private MyUserDetailsService userDetailsService;
+	 
 	 @Autowired
 	 public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 	   auth.jdbcAuthentication().dataSource(dataSource)
 	  .usersByUsernameQuery(
-	   "select username,password, enabled from users where username=?")
+	   "select name,password, enabled from users where name=?")
 	  .authoritiesByUsernameQuery(
-	   "select username, role from user_roles where username=?");
+	   "select name, role from users where name=?");
+	   User.withDefaultPasswordEncoder().username("test").password("test").roles("USER").build();
+	   
 	 } 
 	
 	@Override
@@ -55,7 +61,10 @@ public class MvcSecurityConfig extends WebSecurityConfigurerAdapter {
 //        .antMatchers("/user/**").hasRole("ADMIN")
         .antMatchers("/user/**").hasRole("USER")
 //        .and().httpBasic().realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint())
-        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//We don't need sessions to be created.;
+        .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+        
+        // H2 display blank
+        httpSecurity.headers().frameOptions().disable();
 	}
 
 //	 @Bean
