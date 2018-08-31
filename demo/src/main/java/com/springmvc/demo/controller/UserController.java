@@ -36,7 +36,6 @@ public class UserController {
 
 	@RequestMapping(value = "/getAll")
 	public @ResponseBody Iterable<User> getAllUsersAjax() {
-
 		// AjaxResponseBody will be converted into json format and send back to the
 		// request.
 		return userRepository.findAll();

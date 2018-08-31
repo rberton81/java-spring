@@ -9,14 +9,22 @@
 <body>
 	<div th:fragment="menu">
 		<ul class="menu">
-			<li class="menu-element home"><a href="/">Home</a></li>
-			<li class="menu-element"><a href="/h2db/index">Database</a></li>
-			<li class="menu-element"><a href="/sessionIndex">Session Management</a></li>
-			<li class="menu-element"><a href="/dataValidation/index">Data Validation</a></li>
-			<li class="menu-element"><a href="/login/index">Log In & Roles Management</a></li>
-			<li class="menu-element"><a href="/contact">Contact me</a></li>
-			<li class="user" th:if="${#httpServletRequest.remoteUser != null}" th:text="${'You are currently logged in as ' + #httpServletRequest.remoteUser}"></li>
-			<li class="user" th:if="${#httpServletRequest.remoteUser == null}">You are not currently logged in. Do you want to <a href="/login/login">log in</a>?</li>
+			<li class="menu-element home"><a th:href="@{/}">Home</a></li>
+			<li class="menu-element"><a th:href="@{/h2db/index}">Database</a></li>
+			<li class="menu-element"><a th:href="@{/sessionIndex}">Session Management</a></li>
+			<li class="menu-element"><a th:href="@{/dataValidation/index}">Data Validation</a></li>
+			<li class="menu-element"><a th:href="@{/login/index}">Log In & Roles Management</a></li>
+			<li class="menu-element"><a th:href="@{/contact}">Contact me</a></li>
+			<li class="user" th:if="${#httpServletRequest.remoteUser != null}"> 
+        		<form th:action="@{/logout}" method="post">
+            		<input type="submit" value="Sign Out"/>
+        		</form> 
+        	</li>
+			<li class="user" th:if="${#httpServletRequest.remoteUser != null}"> 
+				You are currently logged in as <th:block th:text="${#httpServletRequest.remoteUser}"/>
+        	</li>
+        	
+			<li class="user" th:if="${#httpServletRequest.remoteUser == null}">You are not currently logged in. Do you want to <a th:href="@{/login/login}">log in</a>?</li>
 		</ul>
 		
 	</div>

@@ -18,10 +18,10 @@
 		<p th:text="'Your thought for this session : ' + ${session.thought}"
 			th:unless="${session == null} or ${session.thought == null}" />
 		<p>
-			Put an attribute in session <a href="session-form">here</a>
+			Put an attribute in session <a th:href="@{session-form}">here</a>
 		</p>
 		<p>
-			Clean up your session by clicking <a href="/session-cleanup">here!</a>
+			Clean up your session by clicking <a th:href="@{/session-cleanup}">here!</a>
 		</p>
 	</body>
 </th:block>
