@@ -9,10 +9,11 @@
 </head>
 <th:block layout:fragment="page_content" id="page_content">
 	<body>
-		<p th:text="${message}" />
 		<h1>Here you can try the database interactions of the application</h1>
 		<div>
-			<p>Add a user to the database here... Notice how the whole page is not reloaded after you perform your query!  This is thanks to Ajax querying!</p>
+			<p>Add a user to the database here... Notice how the whole page
+				is not reloaded after you perform your query! This is thanks to Ajax
+				querying!</p>
 
 
 			<div class="container-border">
@@ -38,17 +39,66 @@
 
 		<div>
 			<p>Here you can query all the users from the database</p>
+
+			<div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<a class="btn btn-primary btn-lg" th:href="@{getAllUsers}">Get
+							All Users without Ajax</a>
+					</div>
+				</div>
+			</div>
+
 			<form class="form-horizontal" id="search-form">
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" id="bth-search"
-							class="btn btn-primary btn-lg">Get All Users!</button>
+							class="btn btn-primary btn-lg">Get All Users with Ajax</button>
 					</div>
 
 				</div>
 			</form>
 
 			<div id="feedback"></div>
+		</div>
+
+
+		<th:block th:each="smokeTest : ${smokeTests}">
+			<tr>
+				<td th:text="${smokeTest.name}">A Smoke Test'</td>
+			</tr>
+		</th:block>
+
+
+		<div>
+			<p>test display all users with datatables</p>
+			<table id="employeesTable" class="display">
+
+				<!-- Header Table -->
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Active</th>
+					</tr>
+				</thead>
+				<!-- Footer Table -->
+				<tfoot>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Last Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Active</th>
+					</tr>
+				</tfoot>
+			</table>
+
+
 		</div>
 	</body>
 
@@ -76,11 +126,11 @@
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "getAll",
+				url : "getAllUsersAjax",
 				dataType : 'json',
 				timeout : 100000,
 				success : function(data) {
-					console.log("SUCCESS: ", data);
+					console.log("SUCCESS");
 					display(data);
 				},
 				error : function(e) {
@@ -131,6 +181,9 @@
 		function display(data) {
 			var json = "<h4>Ajax Response</h4><pre>"
 					+ JSON.stringify(data, null, 4) + "</pre>";
+
+			var jsonToTable = ""
+
 			$('#feedback').html(json);
 		}
 	</script>

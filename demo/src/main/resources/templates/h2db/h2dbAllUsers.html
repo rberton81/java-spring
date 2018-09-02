@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="base">
+<head>
+</head>
+<th:block layout:fragment="page_content" id="page_content">
+	<body>
+		<h1>Here are all the users currently registered in the app</h1>
+
+		<table>
+			<thead>
+				<tr>
+					<th>name</th>
+					<th>email</th>
+					<th>role</th>
+				</tr>
+			</thead>
+			<tbody>
+				<th:block th:each="user : ${allUsers}">
+					<tr>
+						<td th:text="${user.name}"></td>
+						<td th:text="${user.email}"></td>
+						<td th:text="${user.role}"></td>
+					</tr>
+				</th:block>
+			</tbody>
+		</table>
+</th:block>
+</html>

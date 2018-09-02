@@ -2,6 +2,7 @@ package com.springmvc.demo.bo;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.springmvc.demo.dto.UserDTO;
 
 public class AjaxResponseBody {
 
@@ -12,7 +13,7 @@ public class AjaxResponseBody {
 	String code;
 
 	@JsonView(Views.Public.class)
-	User result;
+	UserDTO result;
 
 	// getters and setters
 	public String getMsg() {
@@ -31,11 +32,11 @@ public class AjaxResponseBody {
 		this.code = code;
 	}
 
-	public User getResult() {
+	public UserDTO getResult() {
 		return result;
 	}
 
-	public void setResult(User result) {
+	public void setResult(UserDTO result) {
 		this.result = result;
 	}
 

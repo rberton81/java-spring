@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.springmvc.demo.bo.User;
-import com.springmvc.demo.bo.UserRepository;
+import com.springmvc.demo.dto.UserDTO;
+import com.springmvc.demo.dto.UserRepository;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
@@ -17,7 +17,7 @@ public class MyUserDetailsService implements UserDetailsService {
  
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByName(username);
+        UserDTO user = userRepository.findByName(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

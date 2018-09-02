@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan(basePackages={"com.springmvc.demo"})
-@EntityScan(basePackages={"com.springmvc.demo.bo"})
-@EnableJpaRepositories(basePackages={"com.springmvc.demo.bo"})
+@EntityScan(basePackages={"com.springmvc.demo.dto"})
+@EnableJpaRepositories(basePackages={"com.springmvc.demo.dto"})
 public class DemoApplication extends SpringBootServletInitializer  {
 
 	 @Override

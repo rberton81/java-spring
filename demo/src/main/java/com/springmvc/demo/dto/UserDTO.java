@@ -1,4 +1,4 @@
-package com.springmvc.demo.bo;
+package com.springmvc.demo.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,38 +7,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import com.springmvc.demo.bo.Views;
+import com.springmvc.demo.bo.Views.Public;
 
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "USERS")
-public class User {
+public class UserDTO {
 	
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-	@JsonView(Views.Public.class)
     private String name;
 
     private String password;
 
-	@JsonView(Views.Public.class)
     private String email;
 	
     private boolean enabled;
 
     private String role;
 
-	public User() {
+	public UserDTO() {
 		// nothing
 	}
 	
-	public User(String name, String email) {
+	public UserDTO(String name, String email) {
 		this.name = name;
 		this.email = email;
 	}
 	
 
-	public User(String name, String password, String email, boolean enabled, String role) {
+	public UserDTO(String name, String password, String email, boolean enabled, String role) {
 		this.name = name;
 		this.password = password;
 		this.email = email;

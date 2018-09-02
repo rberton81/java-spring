@@ -5,12 +5,12 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.springmvc.demo.bo.User;
+import com.springmvc.demo.dto.UserDTO;
 
 public class MyUserPrincipal implements UserDetails {
-    private User user;
+    private UserDTO user;
  
-    public MyUserPrincipal(User user) {
+    public MyUserPrincipal(UserDTO user) {
         this.user = user;
     }
 
