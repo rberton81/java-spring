@@ -43,8 +43,7 @@
 			<div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<a class="btn btn-primary btn-lg" th:href="@{getAllUsers}">Get
-							All Users without Ajax</a>
+						<a class="btn btn-primary btn-lg" th:href="@{/database/getAllUsers}">Get All Users without Ajax</a>
 					</div>
 				</div>
 			</div>
@@ -55,50 +54,10 @@
 						<button type="submit" id="bth-search"
 							class="btn btn-primary btn-lg">Get All Users with Ajax</button>
 					</div>
-
 				</div>
 			</form>
 
 			<div id="feedback"></div>
-		</div>
-
-
-		<th:block th:each="smokeTest : ${smokeTests}">
-			<tr>
-				<td th:text="${smokeTest.name}">A Smoke Test'</td>
-			</tr>
-		</th:block>
-
-
-		<div>
-			<p>test display all users with datatables</p>
-			<table id="employeesTable" class="display">
-
-				<!-- Header Table -->
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Last Name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Active</th>
-					</tr>
-				</thead>
-				<!-- Footer Table -->
-				<tfoot>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Last Name</th>
-						<th>Email</th>
-						<th>Phone</th>
-						<th>Active</th>
-					</tr>
-				</tfoot>
-			</table>
-
-
 		</div>
 	</body>
 
@@ -126,7 +85,7 @@
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "getAllUsersAjax",
+				url : "database/getAllUsersAjax",
 				dataType : 'json',
 				timeout : 100000,
 				success : function(data) {
@@ -154,7 +113,7 @@
 			$.ajax({
 				type : "POST",
 				contentType : "application/json",
-				url : "addAjax",
+				url : "database/addAjax",
 				data : JSON.stringify(search),
 				dataType : 'json',
 				timeout : 100000,

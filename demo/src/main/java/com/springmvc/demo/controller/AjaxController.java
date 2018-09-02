@@ -30,7 +30,7 @@ public class AjaxController {
 	// field name.
 	// @JsonView(Views.Public.class) - Optional, filters json data to display.
 	@JsonView(Views.Public.class)
-	@RequestMapping(value = "/h2db/addAjax")
+	@RequestMapping(value = "/database/addAjax")
 	public AjaxResponseBody getSearchResultViaAjax(@RequestBody SearchCriteria search) {
 
 		AjaxResponseBody result = new AjaxResponseBody();
@@ -96,11 +96,9 @@ public class AjaxController {
 			result.setCode("400");
 			result.setMsg("At least one of the search criteria is empty!");
 		}
-
 		// AjaxResponseBody will be converted into json format and send back to the
 		// request.
 		return result;
-
 	}
 	
 	private boolean isValidSearchCriteria(SearchCriteria search) {

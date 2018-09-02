@@ -11,17 +11,14 @@
 
 		<h1>Session part index page</h1>
 		<div th:if="${session == null} or ${session.thought == null}">
-			<div th:utext = "'You have not entered any thought yet! Click &lt;a href=&quot;session-form&quot;&gt;here&lt;/a&gt; to enter one! '"></div>
+		You have not entered any thought yet! Click <a th:href="@{/session/session-form}">here</a> to enter one! 
 		</div>
 		
 		<p>
 		<p th:text="'Your thought for this session : ' + ${session.thought}"
 			th:unless="${session == null} or ${session.thought == null}" />
 		<p>
-			Put an attribute in session <a th:href="@{session-form}">here</a>
-		</p>
-		<p>
-			Clean up your session by clicking <a th:href="@{/session-cleanup}">here!</a>
+			Clean up your session by clicking <a th:href="@{/session/session-cleanup}">here!</a>
 		</p>
 	</body>
 </th:block>

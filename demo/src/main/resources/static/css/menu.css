@@ -21,11 +21,12 @@ ul.menu > li.menu-element a {
 
 /* Change the link color to #111 (black) on hover */
 ul.menu > li.menu-element a:hover {
-    background-color: #111;
+    background-color: #4CAF50;
 }
 
+
 /* Change the link color to #111 (black) on hover */
-ul.menu > li.home {
+ul.menu > li#active {
 	background-color: #4CAF50;
     display: block;
     color: white;
@@ -34,10 +35,13 @@ ul.menu > li.home {
 }
 
 /* Change the link color to #111 (black) on hover */
-ul.menu > li.home a:hover {
-    background-color: #4CAF50;
+ul.menu > li.active {
+	background-color: #4CAF50;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
 }
-
 
 /* Change the link color to #111 (black) on hover */
 ul.menu > li.user {
