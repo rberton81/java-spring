@@ -37,7 +37,7 @@ public class AjaxController {
 		// Check if exists before adding
 		if (isValidSearchCriteria(search)) {
 
-			UserDTO n = new UserDTO(search.getUsername(), search.getEmail());
+			UserDTO n = new UserDTO(search.getUsername(), search.getEmail(), "",  false, "ROLE_USER");
 			List<UserDTO> usersQuery = userRepository.findByNameAndEmail(n.getName(), n.getEmail());
 			if (usersQuery.isEmpty()) {
 				UserDTO response = userRepository.save(n);

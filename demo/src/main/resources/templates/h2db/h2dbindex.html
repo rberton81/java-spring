@@ -90,7 +90,7 @@
 				timeout : 100000,
 				success : function(data) {
 					console.log("SUCCESS");
-					display(data);
+					displayToTable(data);
 				},
 				error : function(e) {
 					console.log("ERROR: ", e);
@@ -139,12 +139,23 @@
 
 		function display(data) {
 			var json = "<h4>Ajax Response</h4><pre>"
-					+ JSON.stringify(data, null, 4) + "</pre>";
+				+ JSON.stringify(data, null, 4) + "</pre>";
 
-			var jsonToTable = ""
+		var jsonToTable = ""
 
-			$('#feedback').html(json);
+		$('#feedback').html(json);
 		}
+		
+		function displayToTable(data) {
+					var jsonToTable = "<h4>Ajax Response</h4><pre><table class='dataDisplay'><tr><th>Name</th><th>Email</th><th>Role</th></tr>"
+						for (var i = 0; i < data.length; i++){
+							jsonToTable += "<tr><td>"+data[i].name+"</td><td>" + data[i].email + "</td><td>" + data[i].role + "</td></tr>"
+						}
+						jsonToTable += "</table></pre>"
+
+			$('#feedback').html(jsonToTable);
+		}
+		
 	</script>
 </th:block>
 </html>

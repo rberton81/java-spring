@@ -11,3 +11,30 @@ padding-top: 8px;
 padding-bottom: 8px;
 border-color: green;
 }
+
+
+body {
+	display:flex;
+	flex-direction:column;
+ 	min-height: 100vh;
+ 	margin-bottom : 200px;
+}
+
+
+/* table display */
+table.dataDisplay {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.dataDisplay td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+table.dataDisplay tr:nth-child(even) {
+    background-color: #dddddd;
+}
+/* end table */
